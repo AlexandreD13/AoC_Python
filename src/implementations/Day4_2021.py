@@ -1,14 +1,16 @@
+from typing import List
+
 from src.IDay import IDay
 
 
 class Board:
     def __init__(self):
-        self.board: list[list[int]] = []
+        self.board: List[List[int]] = []
 
     def __str__(self) -> str:
         return f"{self.board}"
 
-    def check_for_bingo(self, numbers: list[int]) -> bool:
+    def check_for_bingo(self, numbers: List[int]) -> bool:
         for row in self.board:
             has_bingo = self.contains_all_elements(numbers, row)
 
@@ -16,7 +18,7 @@ class Board:
                 return True
 
         for i in range(len(self.board) - 1):
-            column: list[int] = [
+            column: List[int] = [
                 self.board[0][i],
                 self.board[1][i],
                 self.board[2][i],
@@ -31,8 +33,8 @@ class Board:
 
         return False
 
-    def calculate_undrawn_sum(self, numbers: list[int]) -> int:
-        array: list[int] = []
+    def calculate_undrawn_sum(self, numbers: List[int]) -> int:
+        array: List[int] = []
 
         for strings in self.board:
             array.append(strings[0])
@@ -41,7 +43,7 @@ class Board:
             array.append(strings[3])
             array.append(strings[4])
 
-        undrawn: list[int] = self.remove_common_elements(array, numbers)
+        undrawn: List[int] = self.remove_common_elements(array, numbers)
 
         total: int = 0
         for value in undrawn:
@@ -50,7 +52,7 @@ class Board:
         return total
 
     @staticmethod
-    def contains_all_elements(array1: list[int], array2: list[int]) -> bool:
+    def contains_all_elements(array1: List[int], array2: List[int]) -> bool:
         array1_set: set = set(array1)
 
         for value in array2:
@@ -60,9 +62,9 @@ class Board:
         return True
 
     @staticmethod
-    def remove_common_elements(array1: list[int], array2: list[int]) -> list[int]:
+    def remove_common_elements(array1: List[int], array2: List[int]) -> List[int]:
         array2_set: set = set(array2)
-        result: list[int] = []
+        result: List[int] = []
 
         for value in array1:
             if value not in array2_set:
@@ -72,7 +74,6 @@ class Board:
 
 
 class Day4_2021(IDay):
-
     def __init__(self, is_real_data):
         super().__init__()
 
@@ -84,15 +85,15 @@ class Day4_2021(IDay):
         else:
             self.input: str = f"src/inputs/2021/{self.name}_test.txt"
 
-        self.data: (list[str], [Board]) = self.custom_import()
+        self.data: (List[str], [Board]) = self.custom_import()
 
     def __str__(self) -> str:
         return f"({self.data[0][0:5]} (...), [Board 1 (...)])"
 
-    def custom_import(self) -> (list[str], list[Board]):
+    def custom_import(self) -> (List[str], List[Board]):
         data = self.import_string_data()
-        numbers: list[int] = []
-        boards: list[Board] = []
+        numbers: List[int] = []
+        boards: List[Board] = []
         board: Board = Board()
 
         for line in data:
@@ -116,7 +117,7 @@ class Day4_2021(IDay):
         index: int = 5
 
         while True:
-            subset: list[str] = self.data[0][:index]
+            subset: List[str] = self.data[0][:index]
 
             for board in self.data[1]:
                 has_bingo = board.check_for_bingo(subset)
@@ -128,10 +129,10 @@ class Day4_2021(IDay):
 
     def part2(self) -> int:
         index: int = 5
-        has_bingo: list[int] = []
+        has_bingo: List[int] = []
 
         while index < len(self.data[0]) - 1:
-            subset: list[int] = self.data[0][:index]
+            subset: List[int] = self.data[0][:index]
 
             for i in range(len(self.data[1])):
                 if self.data[1][i].check_for_bingo(subset) and i not in has_bingo:

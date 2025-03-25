@@ -1,8 +1,9 @@
+from typing import List
+
 from src.IDay import IDay
 
 
 class Day11_2021(IDay):
-
     def __init__(self, is_real_data):
         super().__init__()
 
@@ -51,7 +52,7 @@ class Day11_2021(IDay):
         return flashes
 
     @staticmethod
-    def map_octopuses(data: list[str]) -> dict:
+    def map_octopuses(data: List[str]) -> dict:
         octopuses: dict = {}
 
         for y in range(len(data)):

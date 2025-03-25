@@ -1,10 +1,11 @@
+from typing import List
+
 from src.IDay import IDay
 
 from queue import LifoQueue
 
 
 class Day10_2021(IDay):
-
     def __init__(self, is_real_data):
         super().__init__()
 
@@ -16,7 +17,7 @@ class Day10_2021(IDay):
         else:
             self.input: str = f"src/inputs/2021/{self.name}_test.txt"
 
-        self.data: list[str] = self.import_string_data()
+        self.data: List[str] = self.import_string_data()
 
     def __str__(self) -> str:
         return f"{self.data[:1]} (...)"
@@ -53,8 +54,8 @@ class Day10_2021(IDay):
         return total
 
     def part2(self) -> int:
-        totals: list[int] = []
-        to_remove: list[int] = []
+        totals: List[int] = []
+        to_remove: List[int] = []
 
         for i in range(len(self.data)):
             lifo_queue: LifoQueue = LifoQueue()
@@ -67,7 +68,7 @@ class Day10_2021(IDay):
         return totals[len(totals) // 2]
 
     @staticmethod
-    def remove_corrupted_lines(to_remove: list[int], totals: list[int]) -> None:
+    def remove_corrupted_lines(to_remove: List[int], totals: List[int]) -> None:
         for index in sorted(to_remove, reverse=True):
             if 0 <= index < len(totals):
                 totals.pop(index)
@@ -94,9 +95,7 @@ class Day10_2021(IDay):
 
         return total
 
-    def find_corrupted_lines(
-        self, i: int, lifo_queue: LifoQueue, to_remove: list[int]
-    ) -> None:
+    def find_corrupted_lines(self, i: int, lifo_queue: LifoQueue, to_remove: List[int]) -> None:
         for character in self.data[i]:
             if lifo_queue.empty() or character not in ")]}>":
                 lifo_queue.put(character)

@@ -1,8 +1,9 @@
+from typing import List
+
 from src.IDay import IDay
 
 
 class Day5_2021(IDay):
-
     def __init__(self, is_real_data):
         super().__init__()
 
@@ -14,17 +15,17 @@ class Day5_2021(IDay):
         else:
             self.input: str = f"src/inputs/2021/{self.name}_test.txt"
 
-        self.data: list[list[str]] = self.custom_import()
+        self.data: List[List[str]] = self.custom_import()
 
     def __str__(self) -> str:
         return f"{self.data[:2]} (...)"
 
-    def custom_import(self) -> list[list[str]]:
-        data: list[str] = self.import_string_data()
-        result: list[list[str]] = []
+    def custom_import(self) -> List[List[str]]:
+        data: List[str] = self.import_string_data()
+        result: List[List[str]] = []
 
         for line in data:
-            temp: list[str] = line.split(" -> ")
+            temp: List[str] = line.split(" -> ")
             result.append(temp[0].split(",") + temp[1].split(","))
 
         return result

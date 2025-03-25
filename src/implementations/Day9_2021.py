@@ -1,8 +1,9 @@
+from typing import List
+
 from src.IDay import IDay
 
 
 class Day9_2021(IDay):
-
     def __init__(self, is_real_data):
         super().__init__()
 
@@ -14,7 +15,7 @@ class Day9_2021(IDay):
         else:
             self.input: str = f"src/inputs/2021/{self.name}_test.txt"
 
-        self.data: list[str] = self.import_string_data()
+        self.data: List[str] = self.import_string_data()
 
     def __str__(self) -> str:
         return f"{self.data[:1]} (...)"
@@ -23,8 +24,8 @@ class Day9_2021(IDay):
         return self.calculate_risk_level()
 
     def part2(self) -> int:
-        matrice: list[list[int]] = [*map(list, self.data)]
-        basins: list[int] = []
+        matrice: List[list[int]] = [*map(list, self.data)]
+        basins: List[int] = []
 
         for i in range(len(matrice)):
             for j in range(len(matrice[i])):
@@ -44,7 +45,7 @@ class Day9_2021(IDay):
 
     def calculate_risk_level(self) -> int:
         total: int = 0
-        low_points: list[(int, int)] = []
+        low_points: List[(int, int)] = []
         height_map: dict = self.calculate_heightmap()
 
         for coords, height in height_map.items():
@@ -63,7 +64,7 @@ class Day9_2021(IDay):
 
         return total
 
-    def get_basin(self, matrice: list[list[int]], i: int, j: int) -> int:
+    def get_basin(self, matrice: List[List[int]], i: int, j: int) -> int:
         if 0 <= i < len(matrice) and 0 <= j < len(matrice[i]) and matrice[i][j] != "9":
             matrice[i][j] = "9"
             return (

@@ -1,8 +1,9 @@
+from typing import List
+
 from src.IDay import IDay
 
 
 class Day2_2024(IDay):
-
     def __init__(self, is_real_data):
         super().__init__()
 
@@ -20,7 +21,7 @@ class Day2_2024(IDay):
         return f"{self.data[:3]} (...)"
 
     @staticmethod
-    def parse_line(line: str) -> list[int]:
+    def parse_line(line: str) -> List[int]:
         return [int(elem) for elem in line.split(" ")]
 
     @staticmethod
@@ -33,7 +34,7 @@ class Day2_2024(IDay):
 
         return (is_increasing or is_decreasing) and valid_differences
 
-    def can_be_safe_by_removing_one(self, line: list[int]) -> bool:
+    def can_be_safe_by_removing_one(self, line: List[int]) -> bool:
         n = len(line)
         for i in range(n):
             if 0 < i < n - 1:

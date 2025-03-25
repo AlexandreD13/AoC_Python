@@ -1,11 +1,11 @@
 import os
-from typing import Any
+from typing import Any, List
 
 from src.IDay import IDay
 
 
 class SchoolOfFish:
-    def __init__(self, initial_state: list[int]):
+    def __init__(self, initial_state: List[int]):
         self.group: dict = {
             "0": 0,
             "1": 0,
@@ -44,7 +44,6 @@ class SchoolOfFish:
 
 
 class Day6_2021(IDay):
-
     def __init__(self, is_real_data):
         super().__init__()
 
@@ -56,7 +55,7 @@ class Day6_2021(IDay):
         else:
             self.input: str = f"src/inputs/2021/{self.name}_test.txt"
 
-        self.data: list[int] = self.custom_import()
+        self.data: List[int] = self.custom_import()
 
         self.CYCLES_P1: int = 80
         self.CYCLES_P2: int = 256

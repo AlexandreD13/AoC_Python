@@ -1,10 +1,10 @@
 import sys
+from typing import List
 
 from src.IDay import IDay
 
 
 class Day8_2021(IDay):
-
     def __init__(self, is_real_data):
         super().__init__()
 
@@ -16,15 +16,15 @@ class Day8_2021(IDay):
         else:
             self.input: str = f"src/inputs/2021/{self.name}_test.txt"
 
-        self.data: (list[list[str]], list[list[str]]) = self.custom_import()
+        self.data: (List[List[str]], List[List[str]]) = self.custom_import()
 
     def __str__(self) -> str:
         return f"([Input (...)], [Output (...)])"
 
-    def custom_import(self) -> (list[list[str]], list[list[str]]):
-        data: list[str] = self.import_string_data()
-        input_data: list[list[str]] = []
-        output_data: list[list[str]] = []
+    def custom_import(self) -> (List[List[str]], List[List[str]]):
+        data: List[str] = self.import_string_data()
+        input_data: List[List[str]] = []
+        output_data: List[List[str]] = []
 
         try:
             for i in range(len(data)):
@@ -46,7 +46,7 @@ class Day8_2021(IDay):
         return counter
 
     def part2(self) -> int:
-        values_list: list[dict] = self.parse_line()
+        values_list: List[dict] = self.parse_line()
         line: int = 0
         total: int = 0
 
@@ -56,8 +56,8 @@ class Day8_2021(IDay):
 
         return total
 
-    def parse_line(self) -> list[dict]:
-        values_list: list[dict] = []
+    def parse_line(self) -> List[dict]:
+        values_list: List[dict] = []
 
         for line in self.data[0]:
             line.sort(key=len)
@@ -102,7 +102,7 @@ class Day8_2021(IDay):
         if set(values_dict[1]).issubset(set(item)):
             values_dict[3] = item
         else:
-            temp: list[str] = list(item)
+            temp: List[str] = list(item)
 
             for letter in values_dict[4]:
                 if letter in temp:

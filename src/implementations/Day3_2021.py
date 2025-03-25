@@ -1,8 +1,9 @@
+from typing import List
+
 from src.IDay import IDay
 
 
 class Day3_2021(IDay):
-
     def __init__(self, is_real_data):
         super().__init__()
 
@@ -14,7 +15,7 @@ class Day3_2021(IDay):
         else:
             self.input: str = f"src/inputs/2021/{self.name}_test.txt"
 
-        self.data: list[str] = self.import_string_data()
+        self.data: List[str] = self.import_string_data()
 
     def __str__(self) -> str:
         return f"{self.data[:3]} (...)"
@@ -59,8 +60,8 @@ class Day3_2021(IDay):
         return array[0]
 
     @staticmethod
-    def find_bit_density(data) -> list[int]:
-        bit_density: list[int] = [0] * len(data[0])
+    def find_bit_density(data) -> List[int]:
+        bit_density: List[int] = [0] * len(data[0])
 
         for line in data:
             for i, char in enumerate(line):
@@ -69,9 +70,7 @@ class Day3_2021(IDay):
         return bit_density
 
     @staticmethod
-    def find_positions_to_remove(
-        array: list[str], bit: str, bit_position: int
-    ) -> list[int]:
+    def find_positions_to_remove(array: List[str], bit: str, bit_position: int) -> List[int]:
         to_remove: list[int] = []
 
         for i, line in enumerate(array):

@@ -1,11 +1,10 @@
 import os
-from typing import Any
+from typing import Any, List
 
 from src.IDay import IDay
 
 
 class Day7_2021(IDay):
-
     def __init__(self, is_real_data):
         super().__init__()
 
@@ -17,7 +16,7 @@ class Day7_2021(IDay):
         else:
             self.input: str = f"src/inputs/2021/{self.name}_test.txt"
 
-        self.data: list[int] = self.custom_import()
+        self.data: List[int] = self.custom_import()
 
     def __str__(self) -> str:
         return f"{self.data[:5]} (...)"

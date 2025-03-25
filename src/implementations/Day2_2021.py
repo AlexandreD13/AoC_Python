@@ -2,7 +2,6 @@ from src.IDay import IDay
 
 
 class Day2_2021(IDay):
-
     def __init__(self, is_real_data):
         super().__init__()
 

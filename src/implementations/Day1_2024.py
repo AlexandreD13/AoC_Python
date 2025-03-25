@@ -1,13 +1,12 @@
 import os
 
 from collections import Counter
-from typing import Any
+from typing import Any, Tuple, List
 
 from src.IDay import IDay
 
 
 class Day1_2024(IDay):
-
     def __init__(self, is_real_data):
         super().__init__()
 
@@ -19,7 +18,7 @@ class Day1_2024(IDay):
         else:
             self.input: str = f"src/inputs/2024/{self.name}_test.txt"
 
-        self.data: tuple[list[int]] = self.custom_import()
+        self.data: Tuple[List[int], List[int]] = self.custom_import()
 
         self.data[0].sort()
         self.data[1].sort()
@@ -29,7 +28,7 @@ class Day1_2024(IDay):
     def __str__(self) -> str:
         return f"({self.data[0][:5]} (...), {self.data[1][:5]} (...))"
 
-    def custom_import(self) -> Any:
+    def custom_import(self) -> Tuple[List[int], List[int]]:
         if os.path.exists(self.input):
             with open(self.input, "r") as file:
                 left = []

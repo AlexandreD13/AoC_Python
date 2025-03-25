@@ -1,9 +1,9 @@
 import re
+from typing import List
 
 from src.IDay import IDay
 
 class Day3_2024(IDay):
-
     def __init__(self, is_real_data):
         super().__init__()
 
@@ -15,7 +15,7 @@ class Day3_2024(IDay):
         else:
             self.input: str = f"src/inputs/2024/{self.name}_test.txt"
 
-        self.data: list[str] = self.import_string_data()
+        self.data: List[str] = self.import_string_data()
 
     def __str__(self) -> str:
         return f"['{self.data[0][:20]}...', '{self.data[1][:20]}...'] (...)"
