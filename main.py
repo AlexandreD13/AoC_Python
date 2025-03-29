@@ -7,7 +7,7 @@ from io import StringIO
 from src import IDay
 
 from src.implementations import (Day1_2015, Day2_2015, Day3_2015, Day4_2015, Day5_2015,
-                                 Day6_2015, Day7_2015, Day8_2015)
+                                 Day6_2015, Day7_2015, Day8_2015, Day9_2015, Day10_2015)
 
 from src.implementations import (Day1_2021, Day2_2021, Day3_2021, Day4_2021, Day5_2021,
                                  Day6_2021, Day7_2021, Day8_2021, Day9_2021, Day10_2021,
@@ -25,6 +25,8 @@ years: dict = {
         # Day6_2015.Day6_2015(True), # The naive method is costly
         Day7_2015.Day7_2015(True),
         Day8_2015.Day8_2015(True),
+        Day9_2015.Day9_2015(True),
+        Day10_2015.Day10_2015(True),
     ],
     "2016": [],
     "2017": [],

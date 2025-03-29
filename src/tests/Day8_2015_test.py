@@ -1,7 +1,7 @@
 from src.implementations.Day8_2015 import Day8_2015
 
 
-class TestDay7:
+class TestDay8:
     day = Day8_2015(False)
 
     def test_part1(self):
