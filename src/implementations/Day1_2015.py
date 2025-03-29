@@ -20,28 +20,14 @@ class Day1_2015(IDay):
 
     def part1(self) -> int:
         """
-        Calculates the difference between the number of '(' and ')' characters in the input string.
 
-        Returns:
-            int: The net count of '(' minus ')', representing the final floor.
-
-        Time Complexity:
-            O(N), where N is the length of `self.data`. The method counts occurrences of '(' and ')'
-            separately, both taking O(N) time, leading to an overall O(N) complexity.
         """
 
         return self.data.count("(") - self.data.count(")")
 
     def part2(self) -> int:
         """
-        Determines the first position (1-based index) where the running total reaches -1.
 
-        Returns:
-            int: The index at which the total first becomes -1.
-
-        Time Complexity:
-            O(N), where N is the length of `self.data`. The loop iterates through the string once,
-            making a single pass, resulting in a linear time complexity.
         """
 
         total = 0

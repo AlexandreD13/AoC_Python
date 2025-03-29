@@ -3,11 +3,11 @@ from typing import List
 from src.IDay import IDay
 
 
-class Day2_2015(IDay):
+class Day8_2015(IDay):
     def __init__(self, is_real_data):
         super().__init__()
 
-        self.name = "day2"
+        self.name = "day8"
         self.year = "2015"
 
         if is_real_data:
@@ -21,26 +21,21 @@ class Day2_2015(IDay):
         return f"{self.data[:5]} (...)"
 
     def part1(self) -> int:
-        """
-
-        """
 
         total = 0
         for line in self.data:
-            length, width, height = map(int, line.split("x"))
-            lw, wh, hl = length * width, width * height, height * length
-            total += 2 * (lw + wh + hl) + min(lw, wh, hl)
+            original_length = len(line)
+            memory_length = len(eval(line))
+            total += original_length - memory_length
 
         return total
 
     def part2(self) -> int:
-        """
-
-        """
 
         total = 0
         for line in self.data:
-            length, width, height = sorted(map(int, line.split("x")))
-            total += 2 * (length + width) + (length * width * height)
+            original_length = len(line)
+            encoded_length = 2 + line.count('\\') + line.count('"') + original_length
+            total += encoded_length - original_length
 
         return total
